@@ -1,0 +1,14 @@
+jirasqldata
+docker_working
+nginx.conf
+oodo.conf
+node_modules
+.htppasswd
+backups/
+build/
+backups
+workspace/
+ilm-server/golang/golangeventserver/dist/issaraserver
+*.djcache
+__pycache__
+.vscode

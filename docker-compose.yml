@@ -1,0 +1,40 @@
+
+version: '3.10'
+services:
+  server:
+    image: money-server
+    container_name: money-server
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    # restart: always
+    build:
+      context: ./MyMoney
+      dockerfile: Dockerfile
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./MyMoney:/app/server
+
+  client:
+    image: money-client
+    container_name: money-client
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.local
+    expose: 
+      - 80
+    ports:
+      - 80:80
+    
+    volumes:
+      - ./frontend:/app/client
+    # depends_on:
+    #   - server
+volumes:
+  node_modules:
